@@ -12,8 +12,8 @@ import com.example.mvvmapplication.databinding.RecyclerviewItemBinding
 
 class MyRecyclerViewAdapter(
     private val dataModelList: List<PostModel>,
-    private val context: Context
-) : RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>(), CardClickListener {
+    private val clickListenerImpl: CardClickListenerImpl
+) : RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>() {
 
 
     override fun getItemCount(): Int {
@@ -35,7 +35,7 @@ class MyRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val dataModel = dataModelList[position]
         holder.bind(dataModel)
-        //holder.itemRowBinding.itemClickListener = this
+        holder.itemRowBinding.itemClickListener = clickListenerImpl
     }
 
     inner class ViewHolder(var itemRowBinding: RecyclerviewItemBinding) :
@@ -44,11 +44,5 @@ class MyRecyclerViewAdapter(
             itemRowBinding.setVariable(BR.model, obj)
             itemRowBinding.executePendingBindings()
         }
-    }
-    override fun cardClicked(f: PostModel) {
-        Toast.makeText(
-            context, "You clicked " + f.title,
-            Toast.LENGTH_LONG
-        ).show()
     }
 }

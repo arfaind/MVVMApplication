@@ -10,7 +10,7 @@
 
         <variable
             name="itemClickListener"
-            type="com.example.mvvmapplication.CardClickListener" />
+            type="com.example.mvvmapplication.CardClickListenerImpl" />
     </data>
 
     <androidx.cardview.widget.CardView

@@ -43,8 +43,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleResponse(postModels: List<PostModel>) {
-
-        val myRecyclerViewAdapter = MyRecyclerViewAdapter(postModels, this)
+        val cardClickListenerImpl: CardClickListenerImpl = CardClickListenerImpl(this)
+        val myRecyclerViewAdapter = MyRecyclerViewAdapter(postModels, cardClickListenerImpl)
         _mainBinding.myAdapter = myRecyclerViewAdapter
 
     }
